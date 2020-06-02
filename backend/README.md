@@ -2,7 +2,7 @@
 
 # Installation
 
-- Install [pyenv](http://fgimian.github.io/blog/2014/04/20/better-python-version-and-environment-management-with-pyenv/) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
+- Install [pyenv](https://github.com/pyenv/pyenv) and [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
 
   - `pyenv install 3.7.4`
   - `pyenv virtualenv 3.7.4 ituddit`
