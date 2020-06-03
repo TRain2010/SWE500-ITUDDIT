@@ -20,3 +20,15 @@
   ### do NOT use PIP INSTALL, ALWAY use PIPENV INSTALL!!!
   - `pipenv install <package_name>`
   - `pipenv lock --requirements > requirements.txt`
+  
+  
+##### Run
+- inside backend/ITUddit folder, run ./manage.py migrate
+- run ./manage.py runserver
+- web browser open localhost:8000
+
+
+##### Current userful urls
+- /accounts/login
+- /accounts/register
+- /api/user/ 
