@@ -12,6 +12,7 @@ django-crispy-forms = "*"
 django-allauth = "*"
 django-rest-auth = "*"
 django-registration = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.6"

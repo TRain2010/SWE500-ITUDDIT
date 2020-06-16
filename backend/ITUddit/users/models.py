@@ -4,5 +4,6 @@ from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
     student_id = models.IntegerField(null=True, blank=True)
     updated_date = models.DateField(auto_now=True)
