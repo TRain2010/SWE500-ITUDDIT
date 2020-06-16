@@ -11,7 +11,8 @@
   <app-navbar></app-navbar>
   Sign Up
   <input [(ngModel)]="register.username">
-  <input [(ngModel)]="register.password" type="password">
+  <input [(ngModel)]="register.password1" type="password">
+  <input [(ngModel)]="register.password2" type="password">
   <input [(ngModel)]="register.email" type="email">
   <button (click)="registerNewUser()">register</button>
 </body>

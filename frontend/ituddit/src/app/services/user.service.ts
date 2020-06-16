@@ -1,16 +1,31 @@
 import { Injectable, APP_ID } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AppConfig } from '../app.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  LOCAL_BACKEND = 'http://localhost:8000/';
-  backend = this.LOCAL_BACKEND;
+  backend = AppConfig.SERVER_BASE_URL;
   constructor(private http: HttpClient) {}
+
   registerUser(userData): Observable<any> {
-    return this.http.post(this.backend + 'api/user_register/', userData);
+    return this.http.post(
+      this.backend + '/api/rest-auth/registration',
+      userData
+    );
+  }
+
+  userLoginService(userData): Observable<any> {
+    let options = {
+      withCredentials: true,
+    };
+    return this.http.post(
+      this.backend + '/api/rest_auth/login/',
+      userData,
+      options
+    );
   }
 }
