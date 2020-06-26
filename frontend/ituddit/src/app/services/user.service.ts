@@ -28,4 +28,8 @@ export class UserService {
       options
     );
   }
+
+  userLogoutService(userData): Observable<any> {
+    return this.http.get(this.backend + '/api/get-crfs/');
+  }
 }
