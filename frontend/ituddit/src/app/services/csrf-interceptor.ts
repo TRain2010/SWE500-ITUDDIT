@@ -19,14 +19,13 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const csrftoken = this.getCookie('csrftoken');
-    const modifiedReq = req.clone({
-      headers: req.headers.set('X-CSRFToken', csrftoken),
-    });
+    const bktoken = this.getCookie('bktoken')
+      ? 'Token ' + this.getCookie('bktoken')
+      : '';
+
     const authmodifiedReq = req.clone({
-      headers: req.headers.set(
-        'Authorization',
-        'Token bdd62dad0fc2dcae85261ae1d276388138673119'
-      ),
+      headers: req.headers.set('Authorization', bktoken),
+      // .set('X-CSRFToken', csrftoken),
     });
     return next.handle(authmodifiedReq);
   }
