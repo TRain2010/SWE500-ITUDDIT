@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -9,7 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class SigninComponent implements OnInit {
   user;
   returnerror;
-  constructor(private userService: UserService, private http: HttpClient) {}
+  constructor(
+    private userService: UserService,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit(): void {
     this.user = {
@@ -21,6 +24,7 @@ export class SigninComponent implements OnInit {
   userLogIn() {
     this.userService.userLoginService(this.user).subscribe(
       (response) => {
+        this.cookieService.set('bktoken', response['key']);
         alert('Login Success');
       },
       (error) => {

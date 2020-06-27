@@ -30,6 +30,6 @@ export class UserService {
   }
 
   userLogoutService(userData): Observable<any> {
-    return this.http.get(this.backend + '/api/get-crfs/');
+    return this.http.post(this.backend + '/api/rest_auth/logout/', userData);
   }
 }

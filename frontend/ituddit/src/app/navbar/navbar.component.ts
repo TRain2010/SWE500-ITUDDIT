@@ -19,16 +19,15 @@ export class NavbarComponent implements OnInit {
   }
   logout(): void {
     this.isAuthenticated = false;
-    console.log(document.cookie);
     this.userService.userLogoutService(this.user).subscribe(
       (response) => {
-        alert('Logout Success');
+        alert(response['detail']);
       },
       (error) => {
         this.returnerror = JSON.stringify(error['error']);
         alert(this.returnerror);
       }
     );
-    console.log('1' + this.cookieService.check('sessionid'));
+    this.cookieService.deleteAll();
   }
 }
