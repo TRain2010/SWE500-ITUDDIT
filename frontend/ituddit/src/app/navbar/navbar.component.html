@@ -1,6 +1,23 @@
-<h1 style="text-align: center;"><a [routerLink]="['/home']">ITUDDIT</a></h1>
-
 <mat-toolbar>
-  <a [routerLink]="['/register']">Register</a>
-  <a [routerLink]="['/login']">Login In</a>
+  <div class="flex-wrapper">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    <h1>ITUDDIT</h1>
+  </div>
+
+  <mat-form-field appearance="outline" aria-label="search">
+    <mat-icon matPrefix>search</mat-icon>
+    <input type="text" matInput placeholder="Search">
+  </mat-form-field>
+
+  <div class="flex-wrapper">
+    <button mat-stroked-button color="primary" (click)="openDialog('signIn')">LOG IN</button>
+    <button mat-raised-button color="primary" (click)="openDialog('singup')">SIGN UP</button>
+    <button mat-button [matMenuTriggerFor]="profile">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #profile="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>

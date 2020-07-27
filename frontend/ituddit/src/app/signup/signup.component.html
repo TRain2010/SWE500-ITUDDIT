@@ -1,20 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<div mat-dialog-content>
+    <form [formGroup]="profileForm">
+        <mat-form-field>
+            <mat-label>User Name: </mat-label>
+            <input matInput type="text" formControlName="userName" required>
+            <mat-error *ngIf="userName.hasError('required')">
+                user name is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email: </mat-label>
+            <input matInput type="email" formControlName="email" email required>
+            <mat-error *ngIf="email.hasError('email')">
+                <ng-container *ngIf="!email.hasError('required')"> Please enter a valid email address </ng-container>
+                <ng-container *ngIf="email.hasError('required')"> email is required</ng-container>  
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password: </mat-label>
+            <input matInput type="text" formControlName="password1" required>
+            <mat-error *ngIf="password1.hasError('required')">
+                password is required 
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Repeat Password: </mat-label>
+            <input matInput type="text" formControlName="password2" required>
+            <mat-error *ngIf="password2.hasError('required')">
+                password is required 
+            </mat-error>
+        </mat-form-field>
+    </form>
+</div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
 
-<body>
-  <app-navbar></app-navbar>
-  Sign Up
-  <input [(ngModel)]="register.username">
-  <input [(ngModel)]="register.password1" type="password">
-  <input [(ngModel)]="register.password2" type="password">
-  <input [(ngModel)]="register.email" type="email">
-  <button (click)="registerNewUser()">register</button>
-</body>
-
-</html>
+<div mat-dialog-actions>
+<button mat-button (click)="registerNewUser()" [disabled]="profileForm.invalid"> Register </button>
+<button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+</div>

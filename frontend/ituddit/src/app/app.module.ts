@@ -3,30 +3,32 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
-import { HomepageComponent } from './homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
+import { HomeModule } from './home/home.module';
+import { NavbarModule } from './navbar/navbar.module';
+import { SigninModule } from './signin/signin.module';
+import { SignupModule } from './signup/signup.module';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
-    SigninComponent,
-    HomepageComponent,
-    NavbarComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     FormsModule,
     HttpClientModule,
+
+    HomeModule,
+    NavbarModule,
+    SigninModule,
+    SignupModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

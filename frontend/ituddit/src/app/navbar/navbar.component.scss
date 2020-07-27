@@ -1,0 +1,28 @@
+.mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mat-form-field {
+    min-width: 40vw;
+    font-size: 12px;
+    max-height: 40px;
+}
+
+.flex-wrapper {
+    display: flex;
+    align-items: center;
+
+    .mat-icon {
+        font-size: xx-large;
+        height: 48px;
+        width: 48px;
+        line-height: 48px;
+        text-align: center;
+    }
+
+    button {
+        margin: 0 4px;
+    }
+}

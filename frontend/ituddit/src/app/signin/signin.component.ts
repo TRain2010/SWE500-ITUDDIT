@@ -1,32 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+
 import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css'],
+  styleUrls: ['./signin.component.scss']
 })
-export class SigninComponent implements OnInit {
-  user;
-  returnerror;
-  constructor(private userService: UserService) {}
+export class SigninComponent {
+  profileForm = new FormGroup({
+    email : new FormControl('', [Validators.required, Validators.email]),
+    password : new FormControl('', [Validators.required]),
+  });
 
-  ngOnInit(): void {
-    this.user = {
-      username: '',
-      password: '',
-    };
+  get email() {
+    return this.profileForm.get('email') as FormControl;
   }
 
+  get password() {
+    return this.profileForm.get('password') as FormControl;
+  }
+
+  constructor(
+    private userService: UserService,
+    private dialogRef: MatDialogRef<SigninComponent>) { }
+
   userLogIn() {
-    this.userService.userLoginService(this.user).subscribe(
+    const email = this.profileForm.get('email');
+    const password = this.profileForm.get('password');
+    this.userService.userLoginService(email).subscribe(
       (response) => {
-        alert('Login Success');
+        console.log(response, password);
+        this.closeDialog();
       },
       (error) => {
-        this.returnerror = JSON.stringify(error['error']);
-        alert(this.returnerror);
+        console.log( 'error: ', JSON.stringify(error));
+        this.closeDialog();
       }
     );
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 }
