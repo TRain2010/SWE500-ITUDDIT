@@ -1,1 +1,79 @@
-<p>detail works!</p>
+<mat-toolbar>
+    <a mat-stroked-button href="/home" color="accent">Close</a>
+</mat-toolbar>
+<mat-card class="card-list">
+    <div class="like-wrapper">
+        <div class="button-wrapper">
+            <button mat-icon-button color="primary" (click)="upvote(post)" aria-label="upvote">
+                <mat-icon>thumb_up_alt</mat-icon>
+              </button>
+            <span>{{post.rate}}</span>
+            <button mat-icon-button color="primary" (click)="downvote(post)" aria-label="downvote">
+                <mat-icon>thumb_down_alt</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="context-wrapper">
+        <div class="context-header">
+            <mat-icon id="group-icon">{{post.logo}}</mat-icon>
+            <span>{{post.group}}</span>
+            <span>post by {{post.auther}}</span>
+            <span>{{post.timestamp | date}}</span>
+        </div>
+        <h3>{{post.title | titlecase}}</h3>
+        <ng-container [ngSwitch]="post.type">
+            <div *ngSwitchCase="type.IMG">img</div>
+            <div *ngSwitchCase="type.VIDEO">video</div>
+            <div *ngSwitchDefault>
+                <p>{{post.content}}</p>
+            </div>
+        </ng-container>
+        <div class="context-footer">
+            <button mat-button disabled>
+                <mat-icon>forum</mat-icon>
+                {{post.comments.length}}
+                Comments
+            </button>
+            <button mat-button disabled>
+                <mat-icon>share</mat-icon>Share
+            </button>
+            <button mat-button disabled>
+                <mat-icon>bookmark</mat-icon>Save
+            </button>
+        </div>
+    </div>
+</mat-card>
+
+<mat-card class="card-list" *ngFor="let comment of post.comments" trackBy="comment.id">
+    <div class="like-wrapper">
+        <div class="button-wrapper">
+            <button mat-icon-button color="primary" (click)="upvote(comment.rate)" aria-label="upvote">
+                <mat-icon>thumb_up_alt</mat-icon>
+              </button>
+            <span>{{comment.rate}}</span>
+            <button mat-icon-button color="primary" (click)="downvote(comment.rate)" aria-label="downvote">
+                <mat-icon>thumb_down_alt</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="context-wrapper">
+        <div class="context-header">
+            <span>post by {{comment.auther}}</span>
+            <span>{{comment.timestamp | date: "MMM d, y, h:mm:ss a"}}</span>
+        </div>
+        <div>
+            <ng-container *ngIf="comment?.isReplayTo?.id">
+                <div class="replay">
+                    <div class="context-header">
+                        <span>post by {{comment.isReplayTo.auther}}</span>
+                        <span>{{comment.isReplayTo.timestamp | date}}</span>
+                    </div>
+                    <div>
+                        {{comment.isReplayTo.content}}
+                    </div>
+                </div>
+            </ng-container>
+            {{comment.content}}
+        </div>
+    </div>
+</mat-card>

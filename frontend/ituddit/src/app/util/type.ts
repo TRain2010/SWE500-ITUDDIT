@@ -2,6 +2,7 @@ export enum Type {
     IMG = 'img',
     VIDEO = 'video',
     TEXT = 'text',
+    URL = 'url',
 }
 
 export interface Post {
@@ -13,7 +14,7 @@ export interface Post {
     type: Type;
     title: string;
     content: string;
-    comments: string[];
+    comments: Comment[];
     rate: number;
 }
 
@@ -23,4 +24,5 @@ export interface Comment {
     timestamp: number;
     isReplayTo: Comment|undefined;
     content: string;
+    rate:number;
 }

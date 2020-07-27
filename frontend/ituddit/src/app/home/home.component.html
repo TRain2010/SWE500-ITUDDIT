@@ -29,11 +29,11 @@
             <mat-card class="card-list" *ngFor="let item of dataList" trackBy="item.id">
                 <div class="like-wrapper">
                     <div class="button-wrapper">
-                        <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
+                        <button mat-icon-button color="primary" (click)="upvote(item)" aria-label="upvote">
                             <mat-icon>thumb_up_alt</mat-icon>
                           </button>
                         <span>{{item.rate}}</span>
-                        <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
+                        <button mat-icon-button color="primary" (click)="downvote(item)" aria-label="downvote">
                             <mat-icon>thumb_down_alt</mat-icon>
                         </button>
                     </div>
@@ -54,13 +54,17 @@
                         </div>
                     </ng-container>
                     <div class="context-footer">
-                        <span>
-                        <mat-icon>forum</mat-icon>
-                        {{item.comments.length}}
-                        Comments
-                        </span>
-                        <span><mat-icon>share</mat-icon>Share</span>
-                        <span><mat-icon>bookmark</mat-icon>Save</span>
+                        <button mat-button (click)="openDetail(item.id)">
+                            <mat-icon>forum</mat-icon>
+                            {{item.comments.length}}
+                            Comments
+                        </button>
+                        <button mat-button>
+                            <mat-icon>share</mat-icon>Share
+                        </button>
+                        <button mat-button>
+                            <mat-icon>bookmark</mat-icon>Save
+                        </button>
                     </div>
                 </div>
             </mat-card>

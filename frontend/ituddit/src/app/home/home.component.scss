@@ -6,13 +6,14 @@ $Illustration-4-hex: #F2D64B;
 $Illustration-5-hex: #F2921D;
 $primary-bg-color: #0079d3;
 $sub-level-btn-color: #BFB8B9;
+$mat-grid: 8px;
 
 .main-container {
     width: 60%;
     margin: auto;
     
     h4 {
-        padding-top: 16px;
+        padding-top: $mat-grid * 2;
     }
 
     .text-wrapper {
@@ -40,23 +41,22 @@ $sub-level-btn-color: #BFB8B9;
 }
 
 .mat-grid-tile {
-    border-radius: 8px;
+    border-radius: $mat-grid;
 }
 
 .mat-form-field {
-    padding: 0 8px;
+    padding: 0 $mat-grid;
 }
 
 .mat-stroked-button {
-    margin: 0 8px;
+    margin: 0 $mat-grid;
 }
 
 .mat-card {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin:16px 0;
-    // padding: 8px 0;
+    margin: ($mat-grid * 2) 0;
 }
 
 .mat-card:first-child {
@@ -68,7 +68,7 @@ $sub-level-btn-color: #BFB8B9;
 }
 
 .mat-button.mat-primary, .mat-stroked-button.mat-primary {
-    border-radius: 16px;
+    border-radius: $mat-grid * 2;
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
@@ -76,19 +76,21 @@ $sub-level-btn-color: #BFB8B9;
 }
 
 .like-wrapper {
-    width: 56px;
+    width: $mat-grid * 7;
     height: 100%;
     text-align: center;
     // background-color: rgba($color: #000000, $alpha: .2);
 }
 
 .button-wrapper {
-    padding: 24px 0;
+    padding: ($mat-grid * 3) 0;
+    display: flex;
+    flex-direction: column;
 
     span {
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
+        width: $mat-grid * 5;
+        height: $mat-grid * 5;
+        line-height: $mat-grid * 5;
         text-align: center;
     }
 }
@@ -96,9 +98,9 @@ $sub-level-btn-color: #BFB8B9;
 .context-header {
     display: flex;
     align-items: center;
-    padding: 16px;
+    padding: $mat-grid * 2;
     span {
-        padding-right: 16px;
+        padding-right: $mat-grid * 2;
         font-weight: 500;
     }
 }
@@ -110,20 +112,20 @@ $sub-level-btn-color: #BFB8B9;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 8px;
+    padding: $mat-grid;
 
     h3 {
-        padding: 16px;
+        padding: $mat-grid * 2;
         font-weight: 800;
-        font-size: 40px;
+        font-size: $mat-grid * 5;
     }
 
     p {
-        padding: 8px 36px;
+        padding: $mat-grid ($mat-grid * 3);
     }
 
     .mat-icon {
-        padding-right: 8px;
+        padding-right: $mat-grid;
     }
     
     #group-icon {
@@ -136,11 +138,11 @@ $sub-level-btn-color: #BFB8B9;
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 16px;
+    padding: $mat-grid * 2;
     span {
         display: flex;
         align-items: center;
-        padding-right: 16px;
+        padding-right: $mat-grid * 2;
         font-weight: 500;
     }
     color: $sub-level-btn-color;

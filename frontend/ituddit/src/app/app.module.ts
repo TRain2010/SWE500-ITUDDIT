@@ -11,12 +11,11 @@ import { HomeModule } from './home/home.module';
 import { NavbarModule } from './navbar/navbar.module';
 import { SigninModule } from './signin/signin.module';
 import { SignupModule } from './signup/signup.module';
-import { DetailComponent } from './detail/detail.component';
+import { DetailModule } from './detail/detail.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +24,7 @@ import { DetailComponent } from './detail/detail.component';
     FormsModule,
     HttpClientModule,
 
+    DetailModule,
     HomeModule,
     NavbarModule,
     SigninModule,

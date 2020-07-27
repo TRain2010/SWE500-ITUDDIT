@@ -1,0 +1,21 @@
+$mat-grid: 8px;
+
+:host {
+    display: block;
+    width: 80vw;
+    margin-left: 10vw;
+}
+
+.mat-toolbar {
+    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.replay {
+    background-color: lightgray;
+    font: italic 1em "Fira Sans", serif;
+    border: 1px solid lightgray;
+    padding: $mat-grid * 3;
+    margin: $mat-grid ($mat-grid * 2) ($mat-grid * 2);
+}
